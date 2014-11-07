@@ -49,8 +49,11 @@
 	<property name="hibernateProperties">
 		<props>
 			<prop key="dialect">org.hibernate.dialect.MySQLDialect</prop>
+			<prop key="hibernate.hbm2ddl.auto">create</prop>
+			<prop key="hibernate.show_sql">true</prop>
 		</props>
 	</property>
+	
 </bean>
 
 <bean id="hibernateDaoImpl" class="com.reuters.cc.dao.HibernateDaoImpl"/>

@@ -22,9 +22,18 @@
             expression="org.springframework.stereotype.Component" />
 </context:component-scan>
 
+<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="systemPropertiesModeName" value="SYSTEM_PROPERTIES_MODE_OVERRIDE" />
+		<property name="ignoreResourceNotFound" value="true" />
+		<property name="locations"> 
+			<list>
+				<value>classpath:application.properties</value>
+			</list>
+		</property>
+</bean>
 <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
 	<property name="driverClassName" value="com.mysql.jdbc.Driver"/>
-	<property name="url" value="jdbc:mysql://localhost:3306/mytest"/>
+	<property name="url" value="${jdbc.url}"/>
 	<property name="username" value="root"/>
 	<property name="password" value="reuters1"/>
 	<property name="initialSize" value="5"/>
@@ -49,7 +58,7 @@
 	<property name="hibernateProperties">
 		<props>
 			<prop key="dialect">org.hibernate.dialect.MySQLDialect</prop>
-			<prop key="hibernate.hbm2ddl.auto">create</prop>
+			<prop key="hibernate.hbm2ddl.auto">create-update</prop>
 			<prop key="hibernate.show_sql">true</prop>
 		</props>
 	</property>

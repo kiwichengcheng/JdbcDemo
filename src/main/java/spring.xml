@@ -32,10 +32,10 @@
 		</property>
 </bean>
 <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
-	<property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+	<property name="driverClassName" value="${jdbc.driver}"/>
 	<property name="url" value="${jdbc.url}"/>
-	<property name="username" value="root"/>
-	<property name="password" value="reuters1"/>
+	<property name="username" value="${jdbc.username}"/>
+	<property name="password" value="${jdbc.password}"/>
 	<property name="initialSize" value="5"/>
 	<property name="maxActive" value="20"/>
 </bean>
@@ -58,7 +58,7 @@
 	<property name="hibernateProperties">
 		<props>
 			<prop key="dialect">org.hibernate.dialect.MySQLDialect</prop>
-			<prop key="hibernate.hbm2ddl.auto">create-update</prop>
+			<prop key="hibernate.hbm2ddl.auto">create</prop>
 			<prop key="hibernate.show_sql">true</prop>
 		</props>
 	</property>

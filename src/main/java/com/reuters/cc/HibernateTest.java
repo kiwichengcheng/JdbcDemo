@@ -32,13 +32,14 @@ public class HibernateTest {
 		address2.setStreet("Office Stree Name");
 		address2.setCity("Office City Name");
 		user.setOfficeAddress(address2);
-		
-		/*UserDetails user2 = new UserDetails();
+		/*
+		UserDetails user2 = new UserDetails();
 		user2.setUserName("Second User");
-		user2.setAddress();
 		user2.setJoinedDate(new Date());
 		user2.setDescription("Description of the user goes here");
 		*/
+		user.getListOfAddress().add(address);
+		user.getListOfAddress().add(address2);
 		ApplicationContext context = new ClassPathXmlApplicationContext("spring.xml");
 		SessionFactory sessionFactory = context.getBean("sessionFactory",SessionFactory.class);
 		Session session = sessionFactory.openSession();
@@ -47,9 +48,9 @@ public class HibernateTest {
 		//session.save(user2);
 		session.getTransaction().commit();
 		
-		/*session.close();
+		//session.close();
 		
-		user = null;
+		/*user = null;
 		session = sessionFactory.openSession();
 		session.beginTransaction();
 		user = (UserDetails)session.get(UserDetails.class, 1);

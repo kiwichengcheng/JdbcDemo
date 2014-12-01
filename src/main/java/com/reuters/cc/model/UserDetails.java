@@ -10,6 +10,7 @@ import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -62,6 +63,24 @@ public class UserDetails {
 	private Collection<Address> listOfAddress = new ArrayList<Address>();
 	
 	
+	
+	
+	public Collection<Address> getListOfAddress2() {
+		return listOfAddress2;
+	}
+	public void setListOfAddress2(Collection<Address> listOfAddress2) {
+		this.listOfAddress2 = listOfAddress2;
+	}
+	
+	
+	@ElementCollection(fetch=FetchType.EAGER)
+	@JoinTable(name="USER_ADDRESS2",
+			joinColumns=@JoinColumn(name="USER_ID")
+			)
+	@GenericGenerator(name="hilo-gen",strategy="hilo")
+	@CollectionId(columns = { @Column(name="ADDRESS_ID") }, generator = "hilo-gen", type = @Type(type="long"))
+	private Collection<Address> listOfAddress2 = new ArrayList<Address>();
+	
 	public Date getJoinedDate() {
 		return joinedDate;
 	}
@@ -108,6 +127,7 @@ public class UserDetails {
 	public void setListOfAddress(Collection<Address> listOfAddress) {
 		this.listOfAddress = listOfAddress;
 	}
+	
 	
 	
 }

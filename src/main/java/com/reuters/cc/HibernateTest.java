@@ -40,6 +40,8 @@ public class HibernateTest {
 		*/
 		user.getListOfAddress().add(address);
 		user.getListOfAddress().add(address2);
+		user.getListOfAddress2().add(address);
+		user.getListOfAddress2().add(address2);
 		ApplicationContext context = new ClassPathXmlApplicationContext("spring.xml");
 		SessionFactory sessionFactory = context.getBean("sessionFactory",SessionFactory.class);
 		Session session = sessionFactory.openSession();
@@ -50,12 +52,12 @@ public class HibernateTest {
 		
 		//session.close();
 		
-		/*user = null;
+		user = null;
 		session = sessionFactory.openSession();
 		session.beginTransaction();
 		user = (UserDetails)session.get(UserDetails.class, 1);
-		
-		System.out.println("User Name retrieved is "+user.getUserName());*/
+		session.close();
+		System.out.println(user.getListOfAddress2().size());
 	}
 
 }

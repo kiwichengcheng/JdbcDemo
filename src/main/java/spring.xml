@@ -63,6 +63,7 @@
 		</props>
 	</property>
 	
+	
 </bean>
 
 <bean id="hibernateDaoImpl" class="com.reuters.cc.dao.HibernateDaoImpl"/>
